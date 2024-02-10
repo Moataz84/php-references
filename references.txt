@@ -1,0 +1,27 @@
+connect database:
+
+<?php
+  $db_name = '';
+  $host = '';
+  $username = '';
+  $password = '';
+
+  $connection = new mysqli($host, $username, $password, $db_name);
+
+  if ($connection->connect_error) die();
+?>
+
+get data from fetch request:
+
+$data = json_decode(file_get_contents('php://input'), true);
+
+run sql code:
+
+$stmt = $GLOBALS['connection'] -> prepare("INSERT INTO comments(id, name, email, comment, posted) VALUES (?, ?, ?, ?, ?)");
+$stmt -> bind_param("issss", $id, $name, $email, $comment, $posted);
+$stmt -> execute();
+
+hash a password:
+
+$hash = password_hash("password", PASSWORD_DEFAULT);
+$verify =  password_verify("password", $hash);
