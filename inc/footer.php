@@ -1,0 +1,1 @@
+<footer>Forum Site</footer>
